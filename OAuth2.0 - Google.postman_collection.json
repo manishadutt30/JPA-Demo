@@ -1,0 +1,451 @@
+{
+	"info": {
+		"_postman_id": "6ac8b6e7-444d-49f3-85ff-e35c17666b59",
+		"name": "OAuth2.0 - Google",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Construct Authorization Request for grant type = Authorization code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=493515539995-jds0c9nnri2j2hi90gjl7fdki8845cee.apps.googleusercontent.com&scope=openid profile email https://www.googleapis.com/auth/photolibrary.readonly&state=state123&redirect_uri=http://localhost:8080&access_type=offline&prompt=consent",
+					"protocol": "https",
+					"host": [
+						"accounts",
+						"google",
+						"com"
+					],
+					"path": [
+						"o",
+						"oauth2",
+						"v2",
+						"auth"
+					],
+					"query": [
+						{
+							"key": "response_type",
+							"value": "code"
+						},
+						{
+							"key": "client_id",
+							"value": "493515539995-jds0c9nnri2j2hi90gjl7fdki8845cee.apps.googleusercontent.com"
+						},
+						{
+							"key": "scope",
+							"value": "openid profile email https://www.googleapis.com/auth/photolibrary.readonly"
+						},
+						{
+							"key": "state",
+							"value": "state123"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8080"
+						},
+						{
+							"key": "access_type",
+							"value": "offline"
+						},
+						{
+							"key": "prompt",
+							"value": "consent"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Authorization Request and extract Code",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "default"
+						},
+						{
+							"key": "client_id",
+							"value": "493515539995-jds0c9nnri2j2hi90gjl7fdki8845cee.apps.googleusercontent.com",
+							"type": "default"
+						},
+						{
+							"key": "client_secret",
+							"value": "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",
+							"type": "default"
+						},
+						{
+							"key": "code",
+							"value": "4/0AWtgzh59rGHl_OnsGUaZqblP1hd7N0ATAfUmH1qggDfMXxAhE_qBS7SZoDhRraFAbpgqeQ",
+							"type": "default"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8080",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://oauth2.googleapis.com/token",
+					"protocol": "https",
+					"host": [
+						"oauth2",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Photo Album from Google Photo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "ya29.a0AVvZVso8jPZGnlpJnDgQEsaRdeGYptBHQ7xMQcRYfXAAEUc0h8oXwkEm-N0f1ZVK7i_pb0LujAMWQoRgZwNqVSPA6szoOAAlYMCieFO_t05SVdlQNnCo93R57ScrhFH96j7WRlaREEtXAxJHJrgGdEur2d6gaCgYKAdYSARMSFQGbdwaIq2Lu1AUITmJadGXuy96KDw0163",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://photoslibrary.googleapis.com/v1/albums",
+					"protocol": "https",
+					"host": [
+						"photoslibrary",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"v1",
+						"albums"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get one photo from Album",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "ya29.a0AVvZVsozO5qSApMpI2yGV8mOaRasw0u6zb67mALQP2a4q9c3qoVXRZx37JuuGBbgeZ0PAC7zB_oj6iBWZ3gdJnKd9OukOkBiCX2kH38GeJTSQYsn8acPPaXYhxM2MeaPZRACuOCYS95sJIwbvMZXP4HXWCxIaCgYKAbESARMSFQGbdwaIxbAlF7Hdi-MEr4Nyi9sqHQ0163",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://photoslibrary.googleapis.com/v1/albums/AOFkK-jemhSaO-IL54qKO_JOj1quMN0RC738z1GFlJ0wJhsJDPEIswBG6vzQxgj3ns1XYx8noeBl",
+					"protocol": "https",
+					"host": [
+						"photoslibrary",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"v1",
+						"albums",
+						"AOFkK-jemhSaO-IL54qKO_JOj1quMN0RC738z1GFlJ0wJhsJDPEIswBG6vzQxgj3ns1XYx8noeBl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TokenInfo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "access_token",
+							"value": "ya29.a0AVvZVsojshh17W-Qq9YmoJ7eEdz4_R4BA3YWlxdNte6QRyUjUz98ZgF1bs2V9Lx6392x6jKBJGQIG22bc4UHXzc_mTcL_wkb_dpPEYyHHIqniOAltOOTUhmvRFNRMkCGMfX8-btvFT_wqKJE0Po1UEVgGKRetUsaCgYKAe0SAQASFQGbdwaI_pHWCTZigJuC7Uk-bkWLEg0166",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://www.googleapis.com/oauth2/v1/tokeninfo",
+					"protocol": "https",
+					"host": [
+						"www",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"oauth2",
+						"v1",
+						"tokeninfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RefreshToken (to get new access token)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://oauth2.googleapis.com/token?grant_type=refresh_token&client_id=493515539995-jds0c9nnri2j2hi90gjl7fdki8845cee.apps.googleusercontent.com&client_secret=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&refresh_token=1//0gqgTy9VRPSHACgYIARAAGBASNwF-L9IrmBrj_XelFGeQ9iD8PL8DtKtWdTRxSS1nh610ap36vS_JvVdz6mUloRRDitPbC66By1Y",
+					"protocol": "https",
+					"host": [
+						"oauth2",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"token"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "refresh_token"
+						},
+						{
+							"key": "client_id",
+							"value": "493515539995-jds0c9nnri2j2hi90gjl7fdki8845cee.apps.googleusercontent.com"
+						},
+						{
+							"key": "client_secret",
+							"value": "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"
+						},
+						{
+							"key": "refresh_token",
+							"value": "1//0gqgTy9VRPSHACgYIARAAGBASNwF-L9IrmBrj_XelFGeQ9iD8PL8DtKtWdTRxSS1nh610ap36vS_JvVdz6mUloRRDitPbC66By1Y"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Userinfo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "ya29.a0AVvZVsojshh17W-Qq9YmoJ7eEdz4_R4BA3YWlxdNte6QRyUjUz98ZgF1bs2V9Lx6392x6jKBJGQIG22bc4UHXzc_mTcL_wkb_dpPEYyHHIqniOAltOOTUhmvRFNRMkCGMfX8-btvFT_wqKJE0Po1UEVgGKRetUsaCgYKAe0SAQASFQGbdwaI_pHWCTZigJuC7Uk-bkWLEg0166",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://openidconnect.googleapis.com/v1/userinfo",
+					"protocol": "https",
+					"host": [
+						"openidconnect",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"v1",
+						"userinfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetJWT Validator",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.googleapis.com/oauth2/v3/certs",
+					"protocol": "https",
+					"host": [
+						"www",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"oauth2",
+						"v3",
+						"certs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PKCE Verifier Get Authorization",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=493515539995-jds0c9nnri2j2hi90gjl7fdki8845cee.apps.googleusercontent.com&scope=openid%20https://www.googleapis.com/auth/photoslibrary.readonly&state=state123&redirect_uri=http://localhost:8080&code_challenge=s7wFrWBVcw_zOncLadJr0Ek0OiyGpmuwMzLb5dy5Zvw&code_challenge_method=S256\n",
+					"protocol": "https",
+					"host": [
+						"accounts",
+						"google",
+						"com"
+					],
+					"path": [
+						"o",
+						"oauth2",
+						"v2",
+						"auth"
+					],
+					"query": [
+						{
+							"key": "response_type",
+							"value": "code"
+						},
+						{
+							"key": "client_id",
+							"value": "493515539995-jds0c9nnri2j2hi90gjl7fdki8845cee.apps.googleusercontent.com"
+						},
+						{
+							"key": "scope",
+							"value": "openid%20https://www.googleapis.com/auth/photoslibrary.readonly"
+						},
+						{
+							"key": "state",
+							"value": "state123"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8080"
+						},
+						{
+							"key": "code_challenge",
+							"value": "s7wFrWBVcw_zOncLadJr0Ek0OiyGpmuwMzLb5dy5Zvw"
+						},
+						{
+							"key": "code_challenge_method",
+							"value": "S256\n"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Authorization Request and extract Code PKEC",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "default"
+						},
+						{
+							"key": "client_id",
+							"value": "493515539995-jds0c9nnri2j2hi90gjl7fdki8845cee.apps.googleusercontent.com",
+							"type": "default"
+						},
+						{
+							"key": "client_secret",
+							"value": "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",
+							"type": "default"
+						},
+						{
+							"key": "code",
+							"value": "4/0AWtgzh59rGHl_OnsGUaZqblP1hd7N0ATAfUmH1qggDfMXxAhE_qBS7SZoDhRraFAbpgqeQ",
+							"type": "default"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8080",
+							"type": "default"
+						},
+						{
+							"key": "code_verifier",
+							"value": "This is a dumb verifier",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://oauth2.googleapis.com/token",
+					"protocol": "https",
+					"host": [
+						"oauth2",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Implicit Get Authorization",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://accounts.google.com/o/oauth2/v2/auth?response_type=token&client_id=493515539995-jds0c9nnri2j2hi90gjl7fdki8845cee.apps.googleusercontent.com&scope=openid%20https://www.googleapis.com/auth/photoslibrary.readonly&state=state123&redirect_uri=http://localhost:8080\n",
+					"protocol": "https",
+					"host": [
+						"accounts",
+						"google",
+						"com"
+					],
+					"path": [
+						"o",
+						"oauth2",
+						"v2",
+						"auth"
+					],
+					"query": [
+						{
+							"key": "response_type",
+							"value": "token"
+						},
+						{
+							"key": "client_id",
+							"value": "493515539995-jds0c9nnri2j2hi90gjl7fdki8845cee.apps.googleusercontent.com"
+						},
+						{
+							"key": "scope",
+							"value": "openid%20https://www.googleapis.com/auth/photoslibrary.readonly"
+						},
+						{
+							"key": "state",
+							"value": "state123"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8080\n"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

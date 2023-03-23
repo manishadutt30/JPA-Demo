@@ -1,0 +1,284 @@
+{
+	"info": {
+		"_postman_id": "339098f2-6070-4ef1-9780-db52de87a24d",
+		"name": "OAuth2.0 - okta",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Token for Client Credenticals",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "default"
+						},
+						{
+							"key": "client_id",
+							"value": "0oa85txxy326W5kEh5d7",
+							"type": "default"
+						},
+						{
+							"key": "client_secret",
+							"value": "P_OapwzkvhOug_m2FnYph9ambQvMJFK7wMZyAbU5",
+							"type": "default"
+						},
+						{
+							"key": "scope",
+							"value": "fakebookapi.read",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://dev-07387998.okta.com/oauth2/default/v1/token",
+					"protocol": "https",
+					"host": [
+						"dev-07387998",
+						"okta",
+						"com"
+					],
+					"path": [
+						"oauth2",
+						"default",
+						"v1",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All books",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJraWQiOiJBWXB2WGpfRXRCMFl6UUNaTXhaWkhORXJoYlZaQWZfeG01MU9DaWNGbF9NIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULkotNDY1UHZ0YUZZWks2WmFSNldoQjNQQ2xKaXVWUHJHSTVNX212ZEx2MFkiLCJpc3MiOiJodHRwczovL2Rldi0wNzM4Nzk5OC5va3RhLmNvbS9vYXV0aDIvZGVmYXVsdCIsImF1ZCI6ImFwaTovL2RlZmF1bHQiLCJpYXQiOjE2NzUxNTc5NzIsImV4cCI6MTY3NTE2MTU3MiwiY2lkIjoiMG9hODV0eHh5MzI2VzVrRWg1ZDciLCJzY3AiOlsiZmFrZWJvb2thcGkucmVhZCJdLCJzdWIiOiIwb2E4NXR4eHkzMjZXNWtFaDVkNyJ9.SdseiP3uOo600bcU_bSO-zAitE9nZRYHQcMPI0-TCJlk0Oedej7crWWn5G0eDjhb0DMovlYobe1D_AqtytUqv-oPksA6vEZYGJ4eid2ruMyRQTBPALH2XwVrgLemApOO9YbrLhOCZb2psOJE06wqAUXWXg3iofFjQUzzTQN0wIs1YQPKmUC6pGLNPOzTUX5udoX4HNIXU0nUPqhYVD4dckZO66m6_suqBvq16k-BXzhz2g7D-Jeq6YdfhxEovkF7ImS4j1OX5ZXHodi1bk-pQEKX-A8-27TKPTbzz9FCAbLZXnFYFt2XHDhzT_egONaEZ222JDyeyZdFiM2gxQL00A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "default"
+						},
+						{
+							"key": "client_id",
+							"value": "0oa85txxy326W5kEh5d7",
+							"type": "default"
+						},
+						{
+							"key": "client_secret",
+							"value": "P_OapwzkvhOug_m2FnYph9ambQvMJFK7wMZyAbU5",
+							"type": "default"
+						},
+						{
+							"key": "scope",
+							"value": "fakebookapi.read",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJraWQiOiJBWXB2WGpfRXRCMFl6UUNaTXhaWkhORXJoYlZaQWZfeG01MU9DaWNGbF9NIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULkQycHhDb0VNNFdUMUVHU0NoeTBQYmZQZTVVT3VrWUVQRFoyUUdZenFxOGMiLCJpc3MiOiJodHRwczovL2Rldi0wNzM4Nzk5OC5va3RhLmNvbS9vYXV0aDIvZGVmYXVsdCIsImF1ZCI6ImFwaTovL2RlZmF1bHQiLCJpYXQiOjE2NzUyMjQ1MzYsImV4cCI6MTY3NTIyODEzNiwiY2lkIjoiMG9hODV0eHh5MzI2VzVrRWg1ZDciLCJzY3AiOlsiZmFrZWJvb2thcGkucmVhZCIsImZha2Vib29rYXBpLmFkbWluIl0sInN1YiI6IjBvYTg1dHh4eTMyNlc1a0VoNWQ3In0.X2nrFlqrQdRZZmluPu5W5NvFBguotJleNVk8SRBsgTO0SdPRoQm2kL0kvIYkApuq0LcpSAVH7MulyHn61Njt5L6Q2xcdVbHwEeHCJ6Wbe856eEjCMWUuu_Gyz9Kfv8mOoZv9Ntn-UR6U5G45X6x-TVIztMZtIranWvOLHwUfztHqPE3pirJuT0HOjj_Q7lKeYjuFHj7UauE_3n3pa2brCOjGYtm_NPQtzXtQ01UhrH4oQ8p0_V-KnGAgXZfg74YNNrV6JBkeh69PCHKhKUz9CqIyrN0eUqrehVcd2Wgbj0ojfyU2qSTEv_xhpbcx_a4Cd4UMN98E5erihzZLs4c8RQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"title\": \"My book\",\r\n    \"author\":\"xyz\",\r\n    \"cost\": 7.99,\r\n    \"numPages\":300\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Introspect",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "0oa85txxy326W5kEh5d7",
+							"type": "default"
+						},
+						{
+							"key": "client_secret",
+							"value": "P_OapwzkvhOug_m2FnYph9ambQvMJFK7wMZyAbU5",
+							"type": "default"
+						},
+						{
+							"key": "token",
+							"value": "eyJraWQiOiJBWXB2WGpfRXRCMFl6UUNaTXhaWkhORXJoYlZaQWZfeG01MU9DaWNGbF9NIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULkQycHhDb0VNNFdUMUVHU0NoeTBQYmZQZTVVT3VrWUVQRFoyUUdZenFxOGMiLCJpc3MiOiJodHRwczovL2Rldi0wNzM4Nzk5OC5va3RhLmNvbS9vYXV0aDIvZGVmYXVsdCIsImF1ZCI6ImFwaTovL2RlZmF1bHQiLCJpYXQiOjE2NzUyMjQ1MzYsImV4cCI6MTY3NTIyODEzNiwiY2lkIjoiMG9hODV0eHh5MzI2VzVrRWg1ZDciLCJzY3AiOlsiZmFrZWJvb2thcGkucmVhZCIsImZha2Vib29rYXBpLmFkbWluIl0sInN1YiI6IjBvYTg1dHh4eTMyNlc1a0VoNWQ3In0.X2nrFlqrQdRZZmluPu5W5NvFBguotJleNVk8SRBsgTO0SdPRoQm2kL0kvIYkApuq0LcpSAVH7MulyHn61Njt5L6Q2xcdVbHwEeHCJ6Wbe856eEjCMWUuu_Gyz9Kfv8mOoZv9Ntn-UR6U5G45X6x-TVIztMZtIranWvOLHwUfztHqPE3pirJuT0HOjj_Q7lKeYjuFHj7UauE_3n3pa2brCOjGYtm_NPQtzXtQ01UhrH4oQ8p0_V-KnGAgXZfg74YNNrV6JBkeh69PCHKhKUz9CqIyrN0eUqrehVcd2Wgbj0ojfyU2qSTEv_xhpbcx_a4Cd4UMN98E5erihzZLs4c8RQ",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://dev-07387998.okta.com/oauth2/default/v1/introspect",
+					"protocol": "https",
+					"host": [
+						"dev-07387998",
+						"okta",
+						"com"
+					],
+					"path": [
+						"oauth2",
+						"default",
+						"v1",
+						"introspect"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UserInfo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJraWQiOiJBWXB2WGpfRXRCMFl6UUNaTXhaWkhORXJoYlZaQWZfeG01MU9DaWNGbF9NIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULkQycHhDb0VNNFdUMUVHU0NoeTBQYmZQZTVVT3VrWUVQRFoyUUdZenFxOGMiLCJpc3MiOiJodHRwczovL2Rldi0wNzM4Nzk5OC5va3RhLmNvbS9vYXV0aDIvZGVmYXVsdCIsImF1ZCI6ImFwaTovL2RlZmF1bHQiLCJpYXQiOjE2NzUyMjQ1MzYsImV4cCI6MTY3NTIyODEzNiwiY2lkIjoiMG9hODV0eHh5MzI2VzVrRWg1ZDciLCJzY3AiOlsiZmFrZWJvb2thcGkucmVhZCIsImZha2Vib29rYXBpLmFkbWluIl0sInN1YiI6IjBvYTg1dHh4eTMyNlc1a0VoNWQ3In0.X2nrFlqrQdRZZmluPu5W5NvFBguotJleNVk8SRBsgTO0SdPRoQm2kL0kvIYkApuq0LcpSAVH7MulyHn61Njt5L6Q2xcdVbHwEeHCJ6Wbe856eEjCMWUuu_Gyz9Kfv8mOoZv9Ntn-UR6U5G45X6x-TVIztMZtIranWvOLHwUfztHqPE3pirJuT0HOjj_Q7lKeYjuFHj7UauE_3n3pa2brCOjGYtm_NPQtzXtQ01UhrH4oQ8p0_V-KnGAgXZfg74YNNrV6JBkeh69PCHKhKUz9CqIyrN0eUqrehVcd2Wgbj0ojfyU2qSTEv_xhpbcx_a4Cd4UMN98E5erihzZLs4c8RQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dev-07387998.okta.com/oauth2/default/v1/userinfo",
+					"protocol": "https",
+					"host": [
+						"dev-07387998",
+						"okta",
+						"com"
+					],
+					"path": [
+						"oauth2",
+						"default",
+						"v1",
+						"userinfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Toekn Using password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "default"
+						},
+						{
+							"key": "client_id",
+							"value": "0oa86by5f4MUSESeV5d7",
+							"type": "default"
+						},
+						{
+							"key": "username",
+							"value": "manishadutt90@gmail.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "1qaz!QAZ2wsx@WSX",
+							"type": "default"
+						},
+						{
+							"key": "scope",
+							"value": "openid profile email offline_access fakebookapi.read fakebookapi.admin",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://dev-07387998.okta.com/oauth2/default/v1/token",
+					"protocol": "https",
+					"host": [
+						"dev-07387998",
+						"okta",
+						"com"
+					],
+					"path": [
+						"oauth2",
+						"default",
+						"v1",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

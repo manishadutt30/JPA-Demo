@@ -1,0 +1,147 @@
+{
+	"info": {
+		"_postman_id": "d0410faf-e84f-41aa-ae48-60ef47c37f35",
+		"name": "PatientClinicaldata",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetAllPatientDetails",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/clinicalservices/api/patients",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clinicalservices",
+						"api",
+						"patients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddPatietDetail",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Manisha\",\r\n    \"lastName\": \"Dutt\",\r\n    \"age\": 30\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/clinicalservices/api/patients",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clinicalservices",
+						"api",
+						"patients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetOnelPatientDetail",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/clinicalservices/api/patients/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clinicalservices",
+						"api",
+						"patients",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SetClinicaldata",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"componentName\":\"hw\",\r\n    \"componentValue\":\"6/180\",\r\n    \"patientId\": 11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/clinicalservices/api/clinicals",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clinicalservices",
+						"api",
+						"clinicals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AnalyzeClinicaldata",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"componentName\":\"hw\",\r\n    \"componentValue\":\"6/180\",\r\n    \"patientId\": 11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/clinicalservices/api/patients/analyze/11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clinicalservices",
+						"api",
+						"patients",
+						"analyze",
+						"11"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
